@@ -5,56 +5,6 @@ var container 			= PIXI.Container,
     resources 			= PIXI.loader.resources,
     sprite 				= PIXI.Sprite;
 
-// Map
-// Tile ID's
-// Grass = 0
-// Water = 1
-// Waterborder top = 2
-// Waterborder right = 3
-// Waterborder bottom = 4
-// Waterborder left = 5
-// Waterborder top right corner = 6
-// Waterborder bottom right corner = 7
-// Waterborder bottom left corner = 8
-// Waterborder top left corner = 9
-// Waterborder top right corner inverted = 10
-// Waterborder bottom right corner inverted = 11
-// Waterborder bottom left corner inverted= 12
-// Waterborder top left corner inverted = 13
-
-var gameMap = [
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,9,2,2,13,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,5,1,1,1,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,5,1,11,4,4,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,5,1,10,2,2,2,2,2,6,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,5,1,1,1,1,1,1,1,3,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,8,4,4,4,4,4,12,1,3,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,1,3,0,0,0,0,0,0,0,0,0,0,0]
-]
-
 // Create and add renderer
 var renderer = autoDetectRenderer(480, 480);
 
@@ -82,12 +32,17 @@ $(document).ready(function() {
 			'images/water-tr-i.png',
 			'images/water-br-i.png',
 			'images/water-bl-i.png',
-			'images/water-tl-i.png'
+			'images/water-tl-i.png',
+			'images/single.png'
 		])
 		.on('progress', loadProgressHandler)
 		.load(setup);
 
 });
+
+// Global variables
+var cursor;
+var cursorSpeed = 0;
 
 function loadProgressHandler(loader, resources) {
 	console.log("Loading Assest: " + resources.url); 
@@ -160,27 +115,75 @@ function setup() {
 		};
 	};
 
+	// Random Piece
+	cursor = new sprite(resources["images/single.png"].texture);
+	cursor.x = 0;
+	cursor.y = 0;
+	cursor.vx = 0;
+	cursor.vy = 0;
+	stage.addChild(cursor);
+
 	// Setup controls
 	var left 	= keyboard(37),
 		right	= keyboard(39),
 		up		= keyboard(38),
-		down	= keyboard(40);
+		down	= keyboard(40),
+		space	= keyboard(32);
 
 	left.press = function() {
-		console.log('left');
+		cursor.vx = -16;
+		cursor.vy = 0;
+	};
+
+	left.release = function() {
+		if (!right.isDown && cursor.vy === 0) {
+			cursor.vx = 0;
+			cursorSpeed = 5;
+		}
 	};
 
 	right.press = function() {
-		console.log('right');
+		cursor.vx = 16;
+		cursor.vy = 0;
+	};
+
+	right.release = function() {
+		if (!left.isDown && cursor.vy === 0) {
+			cursor.vx = 0;
+			cursorSpeed = 5;
+		}
 	};
 
 	up.press = function() {
-		console.log('up')
+		cursor.vy = -16;
+		cursor.vx = 0;
+	};
+
+	up.release = function() {
+		if (!down.isDown && cursor.vx === 0) {
+			cursor.vy = 0;
+			cursorSpeed = 5;
+		}
 	};
 
 	down.press = function() {
-		console.log('down');
+		cursor.vy = 16;
+		cursor.vx = 0;
 	};
+
+	down.release = function() {
+		if (!up.isDown && cursor.vx === 0) {
+			cursor.vy = 0;
+			cursorSpeed = 5;
+		}
+	};
+
+	space.press = function() {
+		console.log('space');
+	};
+
+	// Set gamestate to play
+	state = play;
 
 	// Begin gameloop
 	gameLoop();
@@ -191,6 +194,9 @@ function gameLoop() {
 
 	// Main game loop
 	requestAnimationFrame(gameLoop);
+
+	// Update game state
+	state();
 	
 	// Render the stage
 	renderer.render(stage);
@@ -199,7 +205,14 @@ function gameLoop() {
 
 function play() {
 
-	// Game logic
+	// Cursor Movement
+	cursorSpeed++;
+	
+	if(cursorSpeed > 5) {
+		cursor.x += cursor.vx;
+	  	cursor.y += cursor.vy
+	  	cursorSpeed = 0;
+	}
 
 };
 

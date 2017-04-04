@@ -43,6 +43,7 @@ $(document).ready(function() {
 // Global variables
 var cursor;
 var cursorSpeed = 0;
+var cursorVelocity = 5;
 
 function loadProgressHandler(loader, resources) {
 	console.log("Loading Assest: " + resources.url); 
@@ -139,6 +140,7 @@ function setup() {
 		if (!right.isDown && cursor.vy === 0) {
 			cursor.vx = 0;
 			cursorSpeed = 5;
+			cursorVelocity = 5;
 		}
 	};
 
@@ -151,6 +153,7 @@ function setup() {
 		if (!left.isDown && cursor.vy === 0) {
 			cursor.vx = 0;
 			cursorSpeed = 5;
+			cursorVelocity = 5;
 		}
 	};
 
@@ -163,6 +166,7 @@ function setup() {
 		if (!down.isDown && cursor.vx === 0) {
 			cursor.vy = 0;
 			cursorSpeed = 5;
+			cursorVelocity = 5;
 		}
 	};
 
@@ -175,6 +179,7 @@ function setup() {
 		if (!up.isDown && cursor.vx === 0) {
 			cursor.vy = 0;
 			cursorSpeed = 5;
+			cursorVelocity = 5;
 		}
 	};
 
@@ -208,9 +213,12 @@ function play() {
 	// Cursor Movement
 	cursorSpeed++;
 	
-	if(cursorSpeed > 5) {
+	if(cursorSpeed > cursorVelocity) {
 		cursor.x += cursor.vx;
-	  	cursor.y += cursor.vy
+	  	cursor.y += cursor.vy;
+	  	if(cursorVelocity > 1) {
+	  		cursorVelocity = cursorVelocity - 0.25;
+	  	}
 	  	cursorSpeed = 0;
 	}
 

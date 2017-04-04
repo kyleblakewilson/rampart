@@ -1,9 +1,9 @@
 // Aliases
 var container			= PIXI.Container,
 	autoDetectRenderer	= PIXI.autoDetectRenderer,
-	loader				= PIXI.loader,
-	resources			= PIXI.loader.resources,
-	sprite				= PIXI.Sprite;
+	loader  			= PIXI.loader,
+	resources  			= PIXI.loader.resources,
+	sprite  			= PIXI.Sprite;
 
 // Create and add renderer
 var renderer = autoDetectRenderer(480, 480);

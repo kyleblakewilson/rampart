@@ -1,9 +1,9 @@
 // Aliases
-var container 			= PIXI.Container,
-    autoDetectRenderer 	= PIXI.autoDetectRenderer,
-    loader 				= PIXI.loader,
-    resources 			= PIXI.loader.resources,
-    sprite 				= PIXI.Sprite;
+var container			= PIXI.Container,
+	autoDetectRenderer	= PIXI.autoDetectRenderer,
+	loader				= PIXI.loader,
+	resources			= PIXI.loader.resources,
+	sprite				= PIXI.Sprite;
 
 // Create and add renderer
 var renderer = autoDetectRenderer(480, 480);
@@ -48,7 +48,7 @@ var cursorHold = false;
 
 function loadProgressHandler(loader, resources) {
 	console.log("Loading Assest: " + resources.url); 
- 	console.log("Loading Progress: " + Math.round(loader.progress) + "%"); 
+	console.log("Loading Progress: " + Math.round(loader.progress) + "%"); 
 }
 
 function setup() {
@@ -224,11 +224,11 @@ function play() {
 	
 	if(cursorSpeed > cursorVelocity) {
 		cursor.x += cursor.vx;
-	  	cursor.y += cursor.vy;
-	  	if(cursorVelocity > 1 && cursorHold === true) {
-	  		cursorVelocity = cursorVelocity - 0.25;
-	  	}
-	  	cursorSpeed = 0;
+		cursor.y += cursor.vy;
+		if(cursorVelocity > 1 && cursorHold === true) {
+			cursorVelocity = cursorVelocity - 0.25;
+		}
+		cursorSpeed = 0;
 	}
 
 };

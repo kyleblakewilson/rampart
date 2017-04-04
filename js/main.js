@@ -44,6 +44,7 @@ $(document).ready(function() {
 var cursor;
 var cursorSpeed = 0;
 var cursorVelocity = 5;
+var cursorHold = false;
 
 function loadProgressHandler(loader, resources) {
 	console.log("Loading Assest: " + resources.url); 
@@ -134,6 +135,7 @@ function setup() {
 	left.press = function() {
 		cursor.vx = -16;
 		cursor.vy = 0;
+		cursorHold = true;
 	};
 
 	left.release = function() {
@@ -141,12 +143,14 @@ function setup() {
 			cursor.vx = 0;
 			cursorSpeed = 5;
 			cursorVelocity = 5;
+			cursorHold = false;
 		}
 	};
 
 	right.press = function() {
 		cursor.vx = 16;
 		cursor.vy = 0;
+		cursorHold = true;
 	};
 
 	right.release = function() {
@@ -154,12 +158,14 @@ function setup() {
 			cursor.vx = 0;
 			cursorSpeed = 5;
 			cursorVelocity = 5;
+			cursorHold = false;
 		}
 	};
 
 	up.press = function() {
 		cursor.vy = -16;
 		cursor.vx = 0;
+		cursorHold = true;
 	};
 
 	up.release = function() {
@@ -167,12 +173,14 @@ function setup() {
 			cursor.vy = 0;
 			cursorSpeed = 5;
 			cursorVelocity = 5;
+			cursorHold = false;
 		}
 	};
 
 	down.press = function() {
 		cursor.vy = 16;
 		cursor.vx = 0;
+		cursorHold = true;
 	};
 
 	down.release = function() {
@@ -180,6 +188,7 @@ function setup() {
 			cursor.vy = 0;
 			cursorSpeed = 5;
 			cursorVelocity = 5;
+			cursorHold = false;
 		}
 	};
 
@@ -216,7 +225,7 @@ function play() {
 	if(cursorSpeed > cursorVelocity) {
 		cursor.x += cursor.vx;
 	  	cursor.y += cursor.vy;
-	  	if(cursorVelocity > 1) {
+	  	if(cursorVelocity > 1 && cursorHold === true) {
 	  		cursorVelocity = cursorVelocity - 0.25;
 	  	}
 	  	cursorSpeed = 0;
